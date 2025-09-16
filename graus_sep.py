@@ -9,33 +9,27 @@ from urllib.parse import unquote
 class SixDegreesCalculator:
     def __init__(self, pages_directory="wikipedia_pessoas"):
         self.pages_dir = pages_directory
-        self.person_graph = defaultdict(set)  # Grafo de conexões entre pessoas
-        self.person_names = {}  # Mapeamento nome -> arquivo
-        self.file_to_name = {}  # Mapeamento arquivo -> nome
-        self.url_to_name = {}  # Mapeamento URL -> nome normalizado
+        self.person_graph = defaultdict(set)
+        self.person_names = {}
+        self.file_to_name = {}
+        self.url_to_name = {}
         
-        # Configurar logging
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
         
-        # Carregar e processar todas as páginas
         self.load_all_pages()
         self.build_connection_graph()
 
     def sanitize_name(self, name):
         """Normaliza o nome para comparação"""
-        # Decodificar URL encoding se necessário
         if '%' in name:
             name = unquote(name)
         
-        # Remover acentos e caracteres especiais, manter espaços
         name = re.sub(r'[^\w\sáàâãéèêíìîóòôõúùûç]', '', name.lower().strip())
-        # Normalizar espaços múltiplos
         name = re.sub(r'\s+', ' ', name)
         return name
 
     def load_all_pages(self):
-        """Carrega informações de todas as páginas coletadas"""
         self.logger.info("Carregando páginas...")
         
         if not os.path.exists(self.pages_dir):
@@ -52,20 +46,16 @@ class SixDegreesCalculator:
                     
                 soup = BeautifulSoup(content, 'html.parser')
                 
-                # Extrair nome da pessoa
                 title_element = soup.find("span", {"class": "mw-page-title-main"})
                 if title_element:
                     person_name = title_element.get_text(strip=True)
                 else:
-                    # Fallback: usar nome do arquivo
                     person_name = file.replace('.html', '').replace('_', ' ')
                 
-                # Armazenar mapeamentos
                 normalized_name = self.sanitize_name(person_name)
                 self.person_names[normalized_name] = file
                 self.file_to_name[file] = person_name
                 
-                # Criar também mapeamento baseado no nome do arquivo
                 file_based_name = self.sanitize_name(file.replace('.html', '').replace('_', ' '))
                 if file_based_name != normalized_name:
                     self.person_names[file_based_name] = file
@@ -80,7 +70,6 @@ class SixDegreesCalculator:
         person_links = []
         
         try:
-            # Procurar no conteúdo principal - usar seletores mais específicos
             content_selectors = [
                 "div#mw-content-text",
                 "div.mw-parser-output", 
@@ -94,7 +83,6 @@ class SixDegreesCalculator:
                     break
             
             if content_div:
-                # Links internos da Wikipedia - regex mais precisa
                 wiki_links = content_div.find_all("a", href=re.compile(r"^/wiki/[^:#]+$"))
                 
                 for link in wiki_links:
@@ -102,22 +90,18 @@ class SixDegreesCalculator:
                     link_text = link.get_text(strip=True)
                     
                     if href and link_text and len(link_text) > 1:
-                        # Extrair nome da URL e decodificar
                         page_name = href.replace('/wiki/', '')
                         page_name = unquote(page_name).replace('_', ' ')
                         
-                        # Verificar se é uma pessoa conhecida
                         normalized_page = self.sanitize_name(page_name)
                         normalized_text = self.sanitize_name(link_text)
                         
-                        # Verificar múltiplas formas de match
                         found_person = None
                         if normalized_page in self.person_names:
                             found_person = normalized_page
                         elif normalized_text in self.person_names:
                             found_person = normalized_text
                         else:
-                            # Busca parcial mais flexível
                             for person_name in self.person_names.keys():
                                 if (normalized_text in person_name or 
                                     person_name in normalized_text or
@@ -132,10 +116,9 @@ class SixDegreesCalculator:
         except Exception as e:
             self.logger.error(f"Erro ao extrair links de pessoa: {e}")
             
-        return list(set(person_links))  # Remover duplicatas
+        return list(set(person_links))
 
     def build_connection_graph(self):
-        """Constrói o grafo de conexões entre pessoas"""
         self.logger.info("Construindo grafo de conexões...")
         
         for filename, person_name in self.file_to_name.items():
@@ -146,21 +129,17 @@ class SixDegreesCalculator:
                     
                 soup = BeautifulSoup(content, 'html.parser')
                 
-                # Extrair pessoas mencionadas nesta página
                 mentioned_persons = self.extract_person_links(soup)
                 
-                # Adicionar conexões ao grafo
                 normalized_current = self.sanitize_name(person_name)
                 
                 for mentioned_person in mentioned_persons:
-                    if mentioned_person != normalized_current:  # Evitar auto-referência
-                        # Adicionar conexão unidirecional (de current para mentioned)
+                    if mentioned_person != normalized_current:
                         self.person_graph[normalized_current].add(mentioned_person)
                         
             except Exception as e:
                 self.logger.error(f"Erro ao processar conexões de {filename}: {e}")
         
-        # Estatísticas do grafo
         total_connections = sum(len(connections) for connections in self.person_graph.values())
         nodes_with_connections = len([p for p in self.person_graph.values() if len(p) > 0])
         
@@ -172,35 +151,28 @@ class SixDegreesCalculator:
         """Encontra uma pessoa pelo nome (busca flexível melhorada)"""
         query_normalized = self.sanitize_name(query)
         
-        # Busca exata
         if query_normalized in self.person_names:
             return query_normalized
         
-        # Busca parcial - diferentes estratégias
         matches = []
         
-        # 1. Busca por substring
         for person_name in self.person_names.keys():
             if query_normalized in person_name or person_name in query_normalized:
                 matches.append(person_name)
         
-        # 2. Busca por palavras individuais
         if not matches:
             query_words = query_normalized.split()
             for person_name in self.person_names.keys():
                 person_words = person_name.split()
-                # Se todas as palavras da query estão na pessoa
                 if all(any(qword in pword for pword in person_words) for qword in query_words):
                     matches.append(person_name)
         
-        # 3. Busca fuzzy simples (primeiras letras)
         if not matches and len(query_normalized) > 2:
             query_start = query_normalized[:3]
             for person_name in self.person_names.keys():
                 if person_name.startswith(query_start):
                     matches.append(person_name)
         
-        # Remover duplicatas mantendo ordem
         matches = list(dict.fromkeys(matches))
         
         if len(matches) == 1:
@@ -214,7 +186,6 @@ class SixDegreesCalculator:
             if len(matches) > 10:
                 print(f"... e mais {len(matches) - 10} resultados")
             
-            # Permitir seleção interativa
             try:
                 choice = input("\nDigite o número da pessoa desejada (ou Enter para cancelar): ").strip()
                 if choice.isdigit():
@@ -229,7 +200,7 @@ class SixDegreesCalculator:
         return None
 
     def bfs_shortest_path(self, start_person, end_person):
-        """Encontra o caminho mais curto usando BFS - versão melhorada"""
+        """Encontra o caminho mais curto usando BFS"""
         if start_person == end_person:
             return [start_person]
         
@@ -245,16 +216,14 @@ class SixDegreesCalculator:
         queue = deque([(start_person, [start_person])])
         visited.add(start_person)
         
-        max_depth = 6  # Limitar a busca a 6 graus
+        max_depth = 6
         
         while queue:
             current_person, path = queue.popleft()
             
-            # Limitar profundidade
             if len(path) > max_depth:
                 continue
             
-            # Explorar conexões
             current_connections = self.person_graph.get(current_person, set())
             
             for neighbor in current_connections:
@@ -282,17 +251,14 @@ class SixDegreesCalculator:
         if not person2:
             return f"Segunda pessoa não encontrada: {person2_query}"
         
-        # Obter nomes originais para exibição
         name1 = self.file_to_name[self.person_names[person1]]
         name2 = self.file_to_name[self.person_names[person2]]
         
         print(f"\nCalculando separação entre: {name1} → {name2}")
         
-        # Encontrar caminho mais curto
         path = self.bfs_shortest_path(person1, person2)
         
         if not path:
-            # Tentar busca bidirecional
             reverse_path = self.bfs_shortest_path(person2, person1)
             if reverse_path:
                 path = list(reversed(reverse_path))
@@ -300,14 +266,13 @@ class SixDegreesCalculator:
         if not path:
             return f"Não há conexão entre {name1} e {name2} (dentro de 6 graus)"
         
-        # Converter caminho para nomes originais
         original_path = []
         for normalized_name in path:
             if normalized_name in self.person_names:
                 original_name = self.file_to_name[self.person_names[normalized_name]]
                 original_path.append(original_name)
             else:
-                original_path.append(normalized_name)  # Fallback
+                original_path.append(normalized_name)
         
         degrees = len(path) - 1
         
@@ -331,7 +296,6 @@ class SixDegreesCalculator:
         total_people = len(self.person_names)
         total_connections = sum(len(connections) for connections in self.person_graph.values())
         
-        # Pessoa com mais conexões
         max_connections = 0
         most_connected = ""
         
@@ -343,7 +307,6 @@ class SixDegreesCalculator:
                 else:
                     most_connected = person
         
-        # Estatísticas de conectividade
         connected_people = len([p for p in self.person_graph.values() if len(p) > 0])
         avg_connections = total_connections / total_people if total_people > 0 else 0
         
@@ -419,7 +382,6 @@ ESTATÍSTICAS DO GRAFO
                 print(f"Erro: {e}")
                 self.logger.error(f"Erro no modo interativo: {e}", exc_info=True)
 
-# Exemplo de uso
 if __name__ == "__main__":
     calculator = SixDegreesCalculator()
     calculator.interactive_mode()
