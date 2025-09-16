@@ -1,0 +1,28 @@
+{
+  "pessoas_coletadas": 0,
+  "paginas_visitadas": 17,
+  "paginas_pessoa": 0,
+  "paginas_nao_pessoa": 17,
+  "taxa_sucesso": 0.0,
+  "tempo_execucao": 12.047889947891235,
+  "person_pages": [],
+  "non_person_pages": [
+    "https://pt.wikipedia.org/wiki/Biblioteca_Apost%C3%B3lica_Vaticana",
+    "https://pt.wikipedia.org/wiki/Base_Virtual_Internacional_de_Autoridade",
+    "https://pt.wikipedia.org/wiki/Anicet_Abel",
+    "https://pt.wikipedia.org/wiki/Biblioteca_Real_dos_Pa%C3%ADses_Baixos",
+    "https://pt.wikipedia.org/wiki/Library_of_Congress",
+    "https://pt.wikipedia.org/wiki/Revista_Brasileira_de_Biblioteconomia_e_Documenta%C3%A7%C3%A3o",
+    "https://pt.wikipedia.org/wiki/Sociedade_Amigos_da_Biblioteca_Nacional",
+    "https://pt.wikipedia.org/wiki/Categoria:Nascidos_em_1990",
+    "https://pt.wikipedia.org/wiki/Biblioteca_Nacional_da_Fran%C3%A7a",
+    "https://pt.wikipedia.org/wiki/Gemeinsame_Normdatei",
+    "https://pt.wikipedia.org/wiki/Biblioteca_Nacional_da_Espanha",
+    "https://pt.wikipedia.org/wiki/International_Federation_of_Library_Associations_and_Institutions",
+    "https://pt.wikipedia.org/wiki/Liga_dos_Campe%C3%B5es_da_AFC",
+    "https://pt.wikipedia.org/wiki/Nawaf_Al-Abed",
+    "https://pt.wikipedia.org/wiki/Global_Research_Identifier_Database",
+    "https://pt.wikipedia.org/wiki/Edson_Nery_da_Fonseca",
+    "https://pt.wikipedia.org/wiki/Hapoel_Tel_Aviv"
+  ]
+}

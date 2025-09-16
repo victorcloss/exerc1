@@ -1,0 +1,10 @@
+{
+  "pessoas_coletadas": 1,
+  "paginas_visitadas": 1083,
+  "paginas_pessoa": 1,
+  "taxa_sucesso": 0.0009233610341643582,
+  "num_workers": 5,
+  "person_pages": [
+    "https://pt.wikipedia.org/wiki/Reino_de_It%C3%A1lia_(1861%E2%80%931946)"
+  ]
+}

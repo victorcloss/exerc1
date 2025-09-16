@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-09-15T19:46:55.759431",
+  "test_target": 50,
+  "results": {
+    "wiki_crawler.py": {
+      "elapsed_time": 16.418741941452026,
+      "pessoas_coletadas": 0,
+      "paginas_visitadas": 18,
+      "taxa_sucesso": 0.0,
+      "pessoas_por_minuto": 0.0,
+      "stdout": "",
+      "stderr": "s\n2025-09-15 19:46:49,063 - INFO - Visitando (17): /wiki/Biblioteca_Real_dos_Pa%C3%ADses_Baixos\n2025-09-15 19:46:49,624 - INFO - Visitando (18): /wiki/Biblioteca_Nacional_da_Espanha\n2025-09-15 19:46:50,198 - INFO - Visitando (19): /wiki/Biblioteca_Nacional_da_Fran%C3%A7a\n2025-09-15 19:46:50,702 - INFO - Crawler OTIMIZADO finalizado!\n2025-09-15 19:46:50,702 - INFO - Pessoas coletadas: 0\n2025-09-15 19:46:50,702 - INFO - Páginas visitadas: 18\n2025-09-15 19:46:50,703 - INFO - Taxa de sucesso: 0.00%\n",
+      "return_code": 0
+    }
+  },
+  "best_crawler": null,
+  "best_score": 0
+}

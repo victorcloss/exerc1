@@ -1,0 +1,235 @@
+{
+  "pessoas_coletadas": 57,
+  "paginas_visitadas": 63,
+  "taxa_sucesso": 0.9047619047619048,
+  "person_pages": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Leonardo_da_Vinci",
+      "title": "Leonardo da Vinci"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Tarcísio_Meira",
+      "title": "Tarcísio Meira"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Bebeto",
+      "title": "Bebeto"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Beethoven",
+      "title": "Ludwig van Beethoven"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Garrincha",
+      "title": "Garrincha"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Xuxa",
+      "title": "Xuxa"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Fernanda_Montenegro",
+      "title": "Fernanda Montenegro"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Carmen_Miranda",
+      "title": "Carmen Miranda"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Chico_Buarque",
+      "title": "Chico Buarque"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Albert_Einstein",
+      "title": "Albert Einstein"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Gisele_Bündchen",
+      "title": "Gisele Bündchen"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Charles_Darwin",
+      "title": "Charles Darwin"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/William_Bonner",
+      "title": "William Bonner"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Ronaldo_Nazário",
+      "title": "Ronaldo Nazário"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Clarice_Lispector",
+      "title": "Clarice Lispector"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Oscar_Niemeyer",
+      "title": "Oscar Niemeyer"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Daniela_Mercury",
+      "title": "Daniela Mercury"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Gilberto_Gil",
+      "title": "Gilberto Gil"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Luciano_Huck",
+      "title": "Luciano Huck"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Nelson_Mandela",
+      "title": "Nelson Mandela"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Sandy_Leah",
+      "title": "Sandy"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Tostão",
+      "title": "Tostão"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Fátima_Bernardes",
+      "title": "Fátima Bernardes"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Romário",
+      "title": "Romário"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Pablo_Picasso",
+      "title": "Pablo Picasso"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Sócrates_(futebolista)",
+      "title": "Sócrates (futebolista)"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Tom_Jobim",
+      "title": "Tom Jobim"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Marie_Curie",
+      "title": "Marie Curie"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Gugu_Liberato",
+      "title": "Gugu Liberato"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Carla_Perez",
+      "title": "Carla Perez"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Maria_Bethânia",
+      "title": "Maria Bethânia"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Hebe_Camargo",
+      "title": "Hebe Camargo"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Vincent_van_Gogh",
+      "title": "Vincent van Gogh"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Fernando_Henrique_Cardoso",
+      "title": "Fernando Henrique Cardoso"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Ana_Maria_Braga",
+      "title": "Ana Maria Braga"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
+      "title": "Luiz Inácio Lula da Silva"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Pelé",
+      "title": "Pelé"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Dilma_Rousseff",
+      "title": "Dilma Rousseff"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Milton_Nascimento",
+      "title": "Milton Nascimento"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Isaac_Newton",
+      "title": "Isaac Newton"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Mozart",
+      "title": "Wolfgang Amadeus Mozart"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Junior_Lima",
+      "title": "Junior Lima"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Ayrton_Senna",
+      "title": "Ayrton Senna"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Fausto_Silva",
+      "title": "Faustão"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/William_Shakespeare",
+      "title": "William Shakespeare"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Regina_Duarte",
+      "title": "Regina Duarte"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Silvio_Santos",
+      "title": "Silvio Santos"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Ivete_Sangalo",
+      "title": "Ivete Sangalo"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Pedro_Bial",
+      "title": "Pedro Bial"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Galvão_Bueno",
+      "title": "Galvão Bueno"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Roberto_Carlos_(cantor)",
+      "title": "Roberto Carlos"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Caetano_Veloso",
+      "title": "Caetano Veloso"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Getúlio_Vargas",
+      "title": "Getúlio Vargas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Jô_Soares",
+      "title": "Jô Soares"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Elis_Regina",
+      "title": "Elis Regina"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Nikola_Tesla",
+      "title": "Nikola Tesla"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Machado_de_Assis",
+      "title": "Machado de Assis"
+    }
+  ]
+}
